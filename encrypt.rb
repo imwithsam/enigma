@@ -36,10 +36,7 @@ class Encrypt
   end
 
   # Encrypt
-  # rotation_a = index 0-1 of encryption_key
-  # rotation_b =  index 1-2 of encryption_key
-  # rotation_c = index 2-3 of encryption_key
-  # rotation_d = index 3-4 of encryption_key
+  # rotations correspond to pairs of digits in the encryption key
   def rotation_a
     @encryption_key[0..1]
   end
@@ -56,10 +53,23 @@ class Encrypt
     @encryption_key[3..4]
   end
 
-  # offset_a = -4 index of (date_stamp)^2
-  # offset_b = -3 index of (date_stamp)^2
-  # offset_c = -2 index of (date_stamp)^2
-  # offset_d = -1 index of (date_stamp)^2
+  # offsets correspond to each of the last 4 digits of the square of the datestamp
+  def offset_a
+    (@datestamp.to_i ** 2).to_s[-4].to_i
+  end
+
+  def offset_b
+    (@datestamp.to_i ** 2).to_s[-3].to_i
+  end
+
+  def offset_c
+    (@datestamp.to_i ** 2).to_s[-2].to_i
+  end
+
+  def offset_d
+    (@datestamp.to_i ** 2).to_s[-1].to_i
+  end
+
   # Algorithm: [(index of unencrypted character + rotation + offset) % character map length] => character map index for encrypted character
 
   # Output File
