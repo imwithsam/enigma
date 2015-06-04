@@ -15,11 +15,13 @@ class Crypto
     self.datestamp = KeyGenerator.get_datestamp
   end
 
+  # TODO: Refactor process_message method
   def process_message(input)
     character_map = KeyGenerator.get_character_map
     char_counter = 1
     output_chars = []
     output_message = ""
+    input.chomp!
 
     input.each_char do |input_char|
       case char_counter
@@ -66,10 +68,6 @@ class Crypto
   end
 
   def status
-    if mode == :decrypt
-      status = "Decrypted '#{input_file}' to '#{output_file}' with the key #{encryption_key} and date #{datestamp}"
-    else
-      status = "Created '#{output_file}' with the key #{encryption_key} and date #{datestamp}"
-    end
+    "Created '#{output_file}' with the key #{encryption_key} and date #{datestamp}"
   end
 end

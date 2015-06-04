@@ -1,9 +1,6 @@
 require_relative 'crypto'
 
 class Encrypt < Crypto
-  # TODO: Ask "Mr. Encrypt, what do you do? What is your key? What is your status?"
-  # TODO: Methods should be no more than 8 lines.
-  # TODO: Make the Key and Date Generators objects that use class methods.
   def get_encrypted_message
     self.mode = :encrypt
     unencrypted_message = ReaderWriter.read_message(input_file)
@@ -13,6 +10,6 @@ class Encrypt < Crypto
   end
 end
 
-# encrypt = Encrypt.new("message.txt", "encrypted.txt")
-# puts encrypt.get_encrypted_message
-# puts encrypt.status
+encrypt = Encrypt.new(ARGV[0], ARGV[1])
+encrypt.get_encrypted_message
+puts encrypt.status

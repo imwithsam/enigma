@@ -22,6 +22,6 @@ class Crack < Crypto
   end
 end
 
-crack = Crack.new("encrypted.txt", "cracked.txt")
-puts crack.get_decrypted_message("030615")
+crack = Crack.new(ARGV[0], ARGV[1])
+crack.get_decrypted_message(ARGV[2].to_s)
 puts crack.status
