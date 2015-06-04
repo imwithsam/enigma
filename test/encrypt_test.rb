@@ -29,5 +29,6 @@ class EncryptTest < MiniTest::Test
     skip("See TODO list.")
     # TODO: Do this in a separate runner class that calls encrypt or decrypt?
     # TODO: May need to require OptionParser library to accept an optional key and timestamp via the CLI
+
   end
 end
